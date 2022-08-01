@@ -4,7 +4,7 @@ const yuswa = "19";
 // const data = (nami, yuswa) => `Sampurasun, tepangkeun simkuring ${nami} yuswa simkuring ${yuswa}`;
 function data(nami, yuswa) {
   return `Sampurasun, tepangkeun simkuring ${nami} yuswa simkuring ${yuswa},`;
-}
+};
 mahasiswa = {
   nama: 'Ujang Solihat',
   umur: 35,
@@ -17,8 +17,7 @@ class Orang {
   constructor() {
     console.log('Objek orang telah di buat');
   }
-}
-
+};
 
 // module.exports.data = data;
 // module.exports.test = test;
