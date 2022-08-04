@@ -16,6 +16,7 @@ fs.writeFile('test/test.txt', 'Hello World Asynchronous', (e) => {
 });
 
 // membaca isi file (synchronous)
-// const data = fs.readFileSync('test/test.txt', 'utf-8');
-// // console.log(data.toString())
-// console.log(data)
+const data = fs.readFileSync('test/test.txt', 'utf-8');
+// console.log(data.toString())
+console.log(data)
+
