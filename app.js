@@ -1,7 +1,7 @@
 // Core Module
 // File System
 
-const fs = require('fs');
+const fs = require("fs");
 
 // menuliskan string ke file (synchronous)
 // try {
@@ -27,13 +27,22 @@ const fs = require('fs');
 // });
 
 // Readline
-const readline = require('readline');
+const readline = require("readline");
 const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout,
+  input: process.stdin,
+  output: process.stdout,
 });
 
-rl.question('Masukan nama anda : ', (nama) => {
-	console.log(`Hallo ${nama}`)
-	rl.close()
+rl.question("Masukan nama anda : ", (nama) => {
+  rl.question("Masukan umur anda : ", (umur) => {
+    const data = { nama, umur };
+    const file = fs.readFileSync("test/data.json", "utf-8");
+    const bio = JSON.parse(file);
+
+    bio.push(data);
+
+    fs.writeFileSync("test/data.json", JSON.stringify(bio));
+    console.log(`Hallo ${nama}, yang berumur ${umur}\nDatanya udah masuk...`);
+    rl.close();
+  });
 });
