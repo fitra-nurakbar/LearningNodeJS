@@ -21,7 +21,19 @@ const fs = require('fs');
 // console.log(data)
 
 // membaca file (asynchronous)
-fs.readFile('tes/test.txt', 'utf-8', (e, data) => {
-     if (e) throw e;
-     console.log(data);
+// fs.readFile('tes/test.txt', 'utf-8', (e, data) => {
+//      if (e) throw e;
+//      console.log(data);
+// });
+
+// Readline
+const readline = require('readline');
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout,
+});
+
+rl.question('Masukan nama anda : ', (nama) => {
+	console.log(`Hallo ${nama}`)
+	rl.close()
 });
