@@ -33,16 +33,27 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+// membuat directory jika belum ada
+const dirPath = "./data/";
+if (!fs.existsSync(dirPath)) {
+  fs.mkdirSync(dirPath);
+}
+// membuat file JSON jika belum ada
+const dataPath = "./data/contacts.json";
+if (!fs.existsSync(dataPath)) {
+  fs.writeFileSync(dataPath, "[]", "utf-8");
+}
+
 rl.question("Masukan nama anda : ", (nama) => {
-  rl.question("Masukan umur anda : ", (umur) => {
-    const data = { nama, umur };
-    const file = fs.readFileSync("test/data.json", "utf-8");
+  rl.question("Masukan No HP anda : ", (noHP) => {
+    const data = { nama, noHP };
+    const file = fs.readFileSync("./data/contacts.json", "utf-8");
     const bio = JSON.parse(file);
 
     bio.push(data);
 
-    fs.writeFileSync("test/data.json", JSON.stringify(bio));
-    console.log(`Hallo ${nama}, yang berumur ${umur}\nDatanya udah masuk...`);
+    fs.writeFileSync("./data/contacts.json", JSON.stringify(bio));
+    console.log(`Hallo ${nama}, Datanya udah masuk...`);
     rl.close();
   });
 });
