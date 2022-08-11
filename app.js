@@ -46,29 +46,21 @@ if (!fs.existsSync(dataPath)) {
   fs.writeFileSync(dataPath, "[]", "utf-8");
 }
 
-const pertanyaan1 = () => {
+const mauTanya = (pertanyaan) => {
   return new Promise((resolve, rejects) => {
-    rl.question("Masukan nama anda : ",
-      (nama) => {
-        resolve(nama);
-      });
-  });
-};
-
-const pertanyaan2 = () => {
-  return new Promise((resolve, rejects) => {
-   rl.question("Masukan No HP anda : ",
-      (noHP) => {
-        resolve(noHP);
+    rl.question(pertanyaan,
+      (inputan) => {
+        resolve(inputan);
       });
   });
 };
 
 const main = async () => {
-  const nama = await pertanyaan1()
-  const noHP = await pertanyaan2()
+  const nama = await mauTanya('Masukan Nama Anda : ')
+  const noHP = await mauTanya('Masukan No HP Anda : ')
+  const email = await mauTanya('Masukan Email Anda : ')
 
-  const data = { nama, noHP };
+  const data = { nama, noHP, email};
   const file = fs.readFileSync("./data/contacts.json", "utf-8");
   const bio = JSON.parse(file);
 
@@ -80,17 +72,3 @@ const main = async () => {
 };
 
 main();
-
-// rl.question("Masukan nama anda : ", (nama) => {
-//   rl.question("Masukan No HP anda : ", (noHP) => {
-//     const data = { nama, noHP };
-//     const file = fs.readFileSync("./data/contacts.json", "utf-8");
-//     const bio = JSON.parse(file);
-
-//     bio.push(data);
-
-//     fs.writeFileSync("./data/contacts.json", JSON.stringify(bio));
-//     console.log(`Hallo ${nama}, Datanya udah masuk...`);
-//     rl.close();
-//   });
-// });
