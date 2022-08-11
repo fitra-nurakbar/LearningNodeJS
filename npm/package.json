@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "see": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fitra Nurakbar",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.0",
     "validator": "^13.5.2"
   }
 }
