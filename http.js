@@ -21,12 +21,18 @@ http
 
     const url = req.url;
 
-    if (url === "/about") {
-      renderHTML("./about.html", res);
-    } else if (url === "/project") {
-      renderHTML("./project.html", res);
-    } else {
-      renderHTML("./index.html", res);
+    switch (url) {
+      case "/about":
+        renderHTML("./about.html", res);
+        break;
+      case "/project":
+        renderHTML("./project.html", res);
+        break;
+      case "/":
+        renderHTML("./index.html", res);
+      default:
+        renderHTML("./404.html", res);
+        break;
     }
   })
   .listen(port, () => {
